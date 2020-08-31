@@ -26,6 +26,7 @@ func _input(event):
 
 func attack(enemy_data:Dictionary) -> void:
 	var enemy = enemy_data.collider
+	enemy.stats.give_damage(2)
 	pass
 
 func determine_action(direction:Vector2) -> void:

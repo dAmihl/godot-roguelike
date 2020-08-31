@@ -1,5 +1,7 @@
 extends "res://scripts/character/Character.gd"
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	self.connect("death", self, "_on_death")
+	
+func _on_death():
+	self.get_parent().call_deferred("remove_child", self)
