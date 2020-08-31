@@ -1,9 +1,9 @@
 extends "res://scripts/character/Character.gd"
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_starting_pos()
+	character_name = "Player"
 	pass # Replace with function body.
 
 func set_starting_pos():
@@ -26,7 +26,7 @@ func _input(event):
 
 func attack(enemy_data:Dictionary) -> void:
 	var enemy = enemy_data.collider
-	enemy.stats.give_damage(2)
+	enemy.stats.give_damage(2, self)
 	pass
 
 func determine_action(direction:Vector2) -> void:
@@ -39,3 +39,7 @@ func determine_action(direction:Vector2) -> void:
 	var map_val = map_node.get_cellv(target_pos)
 	match map_val:
 		0: move(direction)
+
+func _on_Health_Depleted() -> void:
+	._on_Health_Depleted()
+	game_manager.player_death()

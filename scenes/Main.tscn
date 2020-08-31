@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scripts/character/Player.gd" type="Script" id=1]
 [ext_resource path="res://scripts/Map.gd" type="Script" id=2]
@@ -8,6 +8,9 @@
 [ext_resource path="res://assets/at.png" type="Texture" id=6]
 [ext_resource path="res://assets/floor.png" type="Texture" id=7]
 [ext_resource path="res://assets/wall.png" type="Texture" id=8]
+[ext_resource path="res://assets/panel.png" type="Texture" id=9]
+[ext_resource path="res://scenes/GUI.gd" type="Script" id=10]
+[ext_resource path="res://scripts/GameManager.gd" type="Script" id=11]
 
 [sub_resource type="TileSet" id=1]
 0/name = "FloorW"
@@ -83,30 +86,178 @@
 
 [node name="root" type="Node2D"]
 
+[node name="GameManager" type="Node2D" parent="."]
+skew = 4.37114e-08
+script = ExtResource( 11 )
+
 [node name="Map" type="TileMap" parent="."]
+skew = 4.37114e-08
 tile_set = SubResource( 1 )
 cell_size = Vector2( 32, 32 )
+cell_custom_transform = Transform2D( 0, 0, 0, 0, 0, 0 )
 format = 1
-tile_data = PoolIntArray( -524287, 0, 0, -524286, 0, 0, -524285, 0, 0, -524284, 0, 0, -524283, 0, 0, -524282, 0, 0, -524281, 0, 0, -458751, 0, 0, -458745, 0, 0, -327685, 2, 0, -327684, 0, 0, -393216, 0, 0, -393215, 0, 0, -393212, 0, 0, -393211, 0, 0, -393209, 0, 0, -262149, 0, 0, -262148, 0, 0, -327680, 0, 0, -327679, 0, 0, -327676, 0, 0, -327675, 0, 0, -327673, 0, 0, -196613, 0, 0, -196612, 0, 0, -196611, 0, 0, -262144, 0, 0, -262143, 0, 0, -262142, 0, 0, -262141, 0, 0, -262140, 0, 0, -262139, 0, 0, -262137, 0, 0, -131077, 4, 0, -131076, 0, 0, -131075, 0, 0, -196604, 0, 0, -196603, 4, 0, -196601, 0, 0, -65541, 0, 0, -65540, 0, 0, -65539, 0, 0, -131068, 0, 0, -131067, 0, 0, -131065, 0, 0, -5, 0, 0, -4, 0, 0, -3, 0, 0, -2, 0, 0, -1, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, -65529, 0, 0, 65531, 0, 0, 65532, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 7, 0, 0, 65543, 0, 0, 196600, 3, 0, 196601, 0, 0, 196602, 0, 0, 196603, 0, 0, 196604, 0, 0, 196605, 0, 0, 196606, 0, 0, 196607, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0 )
+tile_data = PoolIntArray( 262160, 0, 0, 262161, 4, 0, 262162, 0, 0, 262163, 0, 0, 262164, 0, 0, 262165, 0, 0, 262166, 0, 0, 262167, 0, 0, 262168, 0, 0, 262169, 0, 0, 262170, 0, 0, 327696, 0, 0, 327697, 0, 0, 327698, 0, 0, 327699, 0, 0, 327705, 0, 0, 393232, 0, 0, 393233, 0, 0, 393234, 0, 0, 393241, 0, 0, 458768, 0, 0, 458777, 0, 0, 524304, 0, 0, 524313, 0, 0, 524314, 0, 0, 589834, 0, 0, 589835, 0, 0, 589836, 0, 0, 589837, 4, 0, 589838, 0, 0, 589839, 0, 0, 589840, 0, 0, 589847, 0, 0, 589848, 0, 0, 589849, 4, 0, 589850, 0, 0, 655368, 2, 0, 655369, 0, 0, 655370, 0, 0, 655371, 0, 0, 655372, 0, 0, 655373, 0, 0, 655374, 0, 0, 655375, 0, 0, 655376, 0, 0, 655383, 4, 0, 655384, 0, 0, 655385, 0, 0, 655386, 0, 0, 655387, 3, 0, 720912, 4, 0 )
 script = ExtResource( 2 )
 
 [node name="Player" type="Node2D" parent="."]
+position = Vector2( 509.188, 299.826 )
+skew = 4.37114e-08
 script = ExtResource( 1 )
+character_name = "Player"
 
 [node name="Sprite" type="Sprite" parent="Player"]
 texture = ExtResource( 6 )
 centered = false
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+offset = Vector2( 0, 100 )
 current = true
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
 
-[node name="GUI" type="Control" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GUI" type="Control" parent="CanvasLayer"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MainPanel" type="PanelContainer" parent="GUI"]
-margin_right = 14.0
+[node name="PanelMain" type="MarginContainer" parent="CanvasLayer/GUI"]
+margin_top = 400.0
+margin_right = 1024.0
+margin_bottom = 600.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BotPanel" type="NinePatchRect" parent="CanvasLayer/GUI/PanelMain"]
+margin_right = 1024.0
+margin_bottom = 200.0
+texture = ExtResource( 9 )
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/GUI/PanelMain/BotPanel"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 78.0
+margin_bottom = 88.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Container" type="Control" parent="CanvasLayer/GUI/PanelMain/BotPanel/MarginContainer"]
+margin_right = 58.0
+margin_bottom = 68.0
+
+[node name="Stats" type="VBoxContainer" parent="CanvasLayer/GUI/PanelMain/BotPanel/MarginContainer/Container"]
+margin_right = 58.0
+margin_bottom = 85.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthMargin" type="MarginContainer" parent="CanvasLayer/GUI/PanelMain/BotPanel/MarginContainer/Container/Stats"]
+margin_right = 58.0
 margin_bottom = 14.0
+
+[node name="Health" type="HBoxContainer" parent="CanvasLayer/GUI/PanelMain/BotPanel/MarginContainer/Container/Stats/HealthMargin"]
+margin_right = 58.0
+margin_bottom = 14.0
+
+[node name="HealthLabel" type="Label" parent="CanvasLayer/GUI/PanelMain/BotPanel/MarginContainer/Container/Stats/HealthMargin/Health"]
+margin_right = 42.0
+margin_bottom = 14.0
+text = "Health"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthText" type="Label" parent="CanvasLayer/GUI/PanelMain/BotPanel/MarginContainer/Container/Stats/HealthMargin/Health"]
+margin_left = 46.0
+margin_right = 54.0
+margin_bottom = 14.0
+text = "X"
+
+[node name="AtkMargin" type="MarginContainer" parent="CanvasLayer/GUI/PanelMain/BotPanel/MarginContainer/Container/Stats"]
+margin_top = 18.0
+margin_right = 58.0
+margin_bottom = 32.0
+
+[node name="Atk" type="HBoxContainer" parent="CanvasLayer/GUI/PanelMain/BotPanel/MarginContainer/Container/Stats/AtkMargin"]
+margin_right = 58.0
+margin_bottom = 14.0
+
+[node name="AtkLabel" type="Label" parent="CanvasLayer/GUI/PanelMain/BotPanel/MarginContainer/Container/Stats/AtkMargin/Atk"]
+margin_right = 24.0
+margin_bottom = 14.0
+text = "ATK"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AtkText" type="Label" parent="CanvasLayer/GUI/PanelMain/BotPanel/MarginContainer/Container/Stats/AtkMargin/Atk"]
+margin_left = 28.0
+margin_right = 36.0
+margin_bottom = 14.0
+text = "X"
+
+[node name="DefMargin" type="MarginContainer" parent="CanvasLayer/GUI/PanelMain/BotPanel/MarginContainer/Container/Stats"]
+margin_top = 36.0
+margin_right = 58.0
+margin_bottom = 50.0
+
+[node name="Def" type="HBoxContainer" parent="CanvasLayer/GUI/PanelMain/BotPanel/MarginContainer/Container/Stats/DefMargin"]
+margin_right = 58.0
+margin_bottom = 14.0
+
+[node name="DefLabel" type="Label" parent="CanvasLayer/GUI/PanelMain/BotPanel/MarginContainer/Container/Stats/DefMargin/Def"]
+margin_right = 24.0
+margin_bottom = 14.0
+text = "DEF"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DefText" type="Label" parent="CanvasLayer/GUI/PanelMain/BotPanel/MarginContainer/Container/Stats/DefMargin/Def"]
+margin_left = 28.0
+margin_right = 36.0
+margin_bottom = 14.0
+text = "X"
+
+[node name="ConMargin" type="MarginContainer" parent="CanvasLayer/GUI/PanelMain/BotPanel/MarginContainer/Container/Stats"]
+margin_top = 54.0
+margin_right = 58.0
+margin_bottom = 68.0
+
+[node name="Con" type="HBoxContainer" parent="CanvasLayer/GUI/PanelMain/BotPanel/MarginContainer/Container/Stats/ConMargin"]
+margin_right = 58.0
+margin_bottom = 14.0
+
+[node name="ConLabel" type="Label" parent="CanvasLayer/GUI/PanelMain/BotPanel/MarginContainer/Container/Stats/ConMargin/Con"]
+margin_right = 29.0
+margin_bottom = 14.0
+text = "CON"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ConText" type="Label" parent="CanvasLayer/GUI/PanelMain/BotPanel/MarginContainer/Container/Stats/ConMargin/Con"]
+margin_left = 33.0
+margin_right = 41.0
+margin_bottom = 14.0
+text = "X"
+
+[node name="Log" type="RichTextLabel" parent="CanvasLayer/GUI/PanelMain/BotPanel/MarginContainer/Container"]
+margin_left = 550.0
+margin_right = 950.0
+margin_bottom = 150.0
+scroll_following = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
