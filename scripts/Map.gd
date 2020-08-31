@@ -2,7 +2,7 @@ extends TileMap
 
 var map_size: int = 10
 
-const enemy_scn = preload("res://Enemy.tscn")
+const enemy_scn = preload("res://scenes/Enemy.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
