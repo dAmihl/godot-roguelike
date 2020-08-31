@@ -11,4 +11,4 @@ Very basic and simple roguelike template in Godot Engine.
 * Basic simultanous combat (by moving into an enemy)
 * Very Basic UI showing the stats as well as a simple combat log
 
-![Screenshot](/doc/screen1.png)
+![Screenshot](/doc/screen1.PNG)
