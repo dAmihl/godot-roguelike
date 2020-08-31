@@ -101,3 +101,12 @@ centered = false
 current = true
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
+
+[node name="GUI" type="Control" parent="."]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainPanel" type="PanelContainer" parent="GUI"]
+margin_right = 14.0
+margin_bottom = 14.0
